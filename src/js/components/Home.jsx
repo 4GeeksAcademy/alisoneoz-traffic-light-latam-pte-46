@@ -1,26 +1,22 @@
 import React from "react";
-
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
-
+import { useState } from "react";
 //create your first component
 const Home = () => {
-	return (
-		<div className="text-center">
-            
+const [shineRed, setShineRed] = useState(false);
+const [shineYellow, setShineYellow] = useState(false);
+const [shineGreen, setShineGreen] = useState(false);
+//buenas, hay alguna manera de hacerlo sin usar tres declaraciones de estado sino una sola?
 
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+	return (
+		<div className="container">
+            
+<div className="semaforo">
+	<div className={`red light ${shineRed? "resplandor":""}`}  onClick={()=>{setShineRed(true); setShineYellow(false); setShineGreen(false) }}></div>
+	<div className={`yellow light ${shineYellow? "resplandor":""}`} onClick={()=>{setShineRed(false); setShineYellow(true); setShineGreen(false) }}></div>
+	<div className={`green light ${shineGreen? "resplandor":""}`} onClick={()=>{setShineRed(false); setShineYellow(false); setShineGreen(true) }}></div>
+	
+</div>
+
 		</div>
 	);
 };
